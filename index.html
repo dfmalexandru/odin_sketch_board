@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<script>
+    function drawGrid(x) {
+
+        for (var rows = 0; rows < x; rows++) {
+            for (var col = 0; col < x; col++) {
+                $("#container").append('<div class="grid"></div>');
+            }
+        }
+        $(".grid").width(1024 / x);
+        $(".grid").height(1024 / x);
+    }
+
+
+
+    $(document).ready(function() {
+        drawGrid(16);
+
+        $("#button").click(function() {
+            var x = prompt("How many grids per side?")
+            $('.grid').remove();
+
+            drawGrid(x);
+
+            $(".grid").mouseover(function() {
+                if (Math.random() * 10 > 2) {
+                    $(this).css("background-color", "pink");
+                } else {
+                    $(this).css("background-color", "green");
+                }
+            });
+        })
+
+        $(".grid").mouseover(function() {
+            if (Math.random() * 10 > 2) {
+                $(this).css("background-color", "pink");
+            } else {
+                $(this).css("background-color", "green");
+            }
+        });
+    });
+</script>
+
+<body>
+    <div id="container"></div>
+    <div id="button"><button>New Grid</button></div>
+</body>
+<style>
+    #container {
+        position: relative;
+        top: 30px;
+        outline: 2px solid black;
+        font-size: 0;
+        margin: auto;
+        width: 1024px;
+        height: 1024px;
+        padding: 0;
+        border: none;
+    }
+    
+    .grid {
+        margin: 0;
+        padding: 0;
+        outline: 1px solid black;
+        display: inline-block;
+        border: none;
+    }
+</style>
+
+
+</html>
